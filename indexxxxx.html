@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Vaneezaaa ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+:root {
+    --accent: #ff758c;
+    --text: #4a4a4a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:gradientBG 15s ease infinite;
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Entrance */
+
+#entrance{
+    position:fixed;
+    inset:0;
+    background:white;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.gift-box{
+    font-size:6rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.gift-box:hover{
+    transform:scale(1.2) rotate(10deg);
+}
+
+/* Main Layout */
+
+.container{
+    display:none;
+    max-width:750px;
+    margin:auto;
+    padding:40px 20px;
+    opacity:0;
+    transition:2s;
+}
+
+.glass-card{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(15px);
+    border-radius:30px;
+    padding:40px;
+    margin-bottom:40px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:3.5rem;
+    color:var(--accent);
+}
+
+.main-message{
+    font-size:1.1rem;
+    line-height:1.8;
+}
+
+/* Typewriter */
+
+#typewriter::after{
+    content:"|";
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+/* Reasons Grid */
+
+.reasons-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
+    margin-top:25px;
+}
+
+.reason-item{
+    background:rgba(255,255,255,0.5);
+    padding:15px;
+    border-radius:20px;
+}
+
+/* Floating Hearts */
+
+.floating-heart{
+    position:fixed;
+    bottom:-10vh;
+    color:rgba(255,255,255,0.7);
+    animation:floatUp 6s linear;
+}
+
+@keyframes floatUp{
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Image Gallery */
+
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.image-thumb{
+    overflow:hidden;
+    border-radius:20px;
+    position:relative;
+}
+
+.image-thumb img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    transition:0.4s ease;
+    cursor:pointer;
+}
+
+.image-thumb img:hover{
+    transform:scale(1.08);
+}
+
+/* Final Wish */
+
+.final-wish{
+    font-family:'Dancing Script',cursive;
+    font-size:2.3rem;
+    color:white;
+    text-align:center;
+    margin:60px 0 20px;
+}
+
+/* Button */
+
+.final-btn{
+    background:white;
+    color:var(--accent);
+    border:none;
+    padding:14px 28px;
+    font-size:1rem;
+    border-radius:30px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.final-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+/* Lock Screen */
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.lock-card{
+    background:white;
+    padding:30px 40px;
+    border-radius:25px;
+    font-family:'Dancing Script',cursive;
+    font-size:2rem;
+    color:var(--accent);
+    text-align:center;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.6rem;
+    }
+
+    .glass-card{
+        padding:25px;
+    }
+
+    .image-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .image-thumb img{
+        height:150px;
+    }
+
+    .lock-card{
+        font-size:1.5rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bdaySong" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Entrance -->
+
+<div id="entrance">
+
+    <div class="gift-box" onclick="startExperience()">🎁</div>
+
+    <p style="color:var(--accent);margin-top:10px;">
+        FOR VANEEZAAA 💖
+    </p>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="container" id="mainContainer">
+
+    <!-- Main Card -->
+
+    <div class="glass-card">
+
+        <h1>Happy Birthday Vaneezaaa ❤️</h1>
+
+        <p class="main-message">
+            <span id="typewriter"></span>
+        </p>
+
+    </div>
+
+    <!-- Reasons -->
+
+    <div class="glass-card">
+
+        <div class="reasons-grid">
+
+            <div class="reason-item">Radiant vibe ✨</div>
+            <div class="reason-item">Aesthetic sense 🌸</div>
+            <div class="reason-item">Million-dollar smile 💎</div>
+            <div class="reason-item">Kind heart ❤️</div>
+            <div class="reason-item">Main character 🎬</div>
+            <div class="reason-item">Just Vaneezaaa 🦋</div>
+
+        </div>
+
+    </div>
+
+    <!-- Message -->
+
+    <div class="glass-card">
+
+        <p class="main-message">
+            I wanted to make something unique for you 💖
+            <br><br>
+            Keep shining, cutiieee ✨
+        </p>
+
+    </div>
+
+    <!-- Image Gallery -->
+
+    <div class="glass-card">
+
+        <h3 style="margin-bottom:20px;">
+            Beautiful Memories 📸
+        </h3>
+
+        <div class="image-grid">
+
+          <div class="image-thumb">
+    <img src="WhatsApp Image 2026-05-11 at 2.13.04 AM.jpeg" alt="">
+</div>
+
+      <div class="image-thumb">
+    <img src="WhatsApp Image 2026-05-11 at 2.13.05 AM.jpeg" alt="">
+</div>
+
+                    </div>
+
+    </div>
+
+    <!-- Final Wish -->
+
+    <div class="final-wish">
+        Have the most beautiful day! 💕
+    </div>
+
+    <!-- Button -->
+
+    <div style="text-align:center;margin-bottom:80px;">
+
+        <button class="final-btn" onclick="openFinal()">
+            Open Final Message 💖
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Lock Screen -->
+
+<div id="lockScreen" onclick="unlockMessage()">
+
+    <div class="lock-card">
+        Tap to unlock 🔓
+    </div>
+
+</div>
+
+<script>
+
+const message = `For the one who is pretty and gorgeous,
+may your day be as bright as you are.
+kuch logo ko maloom nh hota who kitne khaas ha jb tk unhe koi bata na de 
+.`;
+
+let i = 0;
+
+function startTyping(){
+
+    const el = document.getElementById("typewriter");
+
+    const t = setInterval(()=>{
+
+        el.innerHTML += message.charAt(i);
+
+        i++;
+
+        if(i >= message.length){
+            clearInterval(t);
+        }
+
+    },50);
+}
+
+function startExperience(){
+
+    document.getElementById("bdaySong").play();
+
+    confetti({
+        particleCount:150,
+        spread:70
+    });
+
+    document.getElementById("entrance").style.display="none";
+
+    const main = document.getElementById("mainContainer");
+
+    main.style.display="block";
+
+    setTimeout(()=>{
+        main.style.opacity=1;
+    },100);
+
+    setTimeout(startTyping,1000);
+
+    setInterval(createHeart,300);
+}
+
+function createHeart(){
+
+    const h = document.createElement("div");
+
+    h.className="floating-heart";
+
+    h.innerHTML="❤";
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.fontSize=Math.random()*20+10+"px";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>{
+        h.remove();
+    },6000);
+}
+
+function openFinal(){
+
+    document.getElementById("lockScreen").style.display="flex";
+}
+
+function unlockMessage(){
+
+    document.getElementById("lockScreen").innerHTML = `
+    
+    <div class="lock-card">
+        Never forget how special you are.<br><br>
+        Today — and always 💖
+    </div>
+    
+    `;
+}
+
+</script>
+
+</body>
+</html>
